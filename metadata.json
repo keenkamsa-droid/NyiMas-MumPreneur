@@ -1,0 +1,6 @@
+{
+  "name": "NyiMas MumPreneur",
+  "description": "Authentic Singapore Halal home-based culinary ordering with signature spiced rice dishes, premium artisanal specials, family platters, and Friday Infaq mosque food-sharing packages.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

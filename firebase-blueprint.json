@@ -1,0 +1,177 @@
+{
+  "entities": {
+    "Order": {
+      "title": "Order",
+      "description": "Customer food order placed through NyiMas MumPreneur",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Authenticated Firebase user UID who placed the order"
+        },
+        "orderId": {
+          "type": "string",
+          "description": "Unique order reference code or Firestore document ID"
+        },
+        "items": {
+          "type": "array",
+          "description": "List of food items and portion options ordered"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Customer full name"
+        },
+        "customerPhone": {
+          "type": "string",
+          "description": "Customer contact mobile number"
+        },
+        "fulfilmentMethod": {
+          "type": "string",
+          "description": "Delivery or collection method"
+        },
+        "deliveryAddress": {
+          "type": "string",
+          "description": "Singapore delivery address"
+        },
+        "orderDate": {
+          "type": "string",
+          "description": "Scheduled fulfillment date"
+        },
+        "orderTime": {
+          "type": "string",
+          "description": "Scheduled fulfillment time window"
+        },
+        "specialInstructions": {
+          "type": "string",
+          "description": "Food preparation or delivery instructions"
+        },
+        "subtotal": {
+          "type": "number",
+          "description": "Subtotal amount for culinary food items in SGD"
+        },
+        "deliveryFee": {
+          "type": "number",
+          "description": "Delivery charge in SGD"
+        },
+        "gst": {
+          "type": "number",
+          "description": "Inclusive GST amount in SGD"
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "Final total order amount payable in SGD"
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status of order lifecycle",
+          "enum": ["confirmed", "preparing", "ready", "out_for_delivery", "completed", "cancelled"]
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Server timestamp when order was placed"
+        }
+      },
+      "required": [
+        "userId",
+        "orderId",
+        "items",
+        "customerName",
+        "customerPhone",
+        "fulfilmentMethod",
+        "subtotal",
+        "deliveryFee",
+        "totalAmount",
+        "status",
+        "createdAt"
+      ]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "Service or catering booking document",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Authenticated Firebase user UID who placed the booking"
+        },
+        "serviceId": {
+          "type": "string",
+          "description": "Unique service identifier"
+        },
+        "serviceName": {
+          "type": "string",
+          "description": "Name of service or catering package"
+        },
+        "providerName": {
+          "type": "string",
+          "description": "Provider or kitchen team name"
+        },
+        "bookingDate": {
+          "type": "string",
+          "description": "Date of scheduled service"
+        },
+        "bookingTime": {
+          "type": "string",
+          "description": "Time of scheduled service"
+        },
+        "serviceAddress": {
+          "type": "string",
+          "description": "Service delivery address"
+        },
+        "specialInstructions": {
+          "type": "string",
+          "description": "Special dietary or setup instructions"
+        },
+        "serviceFee": {
+          "type": "number",
+          "description": "Service fee in SGD"
+        },
+        "platformFee": {
+          "type": "number",
+          "description": "Platform fee in SGD"
+        },
+        "gst": {
+          "type": "number",
+          "description": "GST amount in SGD"
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "Total amount in SGD"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the booking",
+          "enum": ["confirmed", "pending", "completed", "cancelled"]
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Server timestamp of creation"
+        }
+      },
+      "required": [
+        "userId",
+        "serviceId",
+        "serviceName",
+        "bookingDate",
+        "bookingTime",
+        "totalAmount",
+        "status",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": {
+        "$ref": "#/entities/Order"
+      },
+      "description": "Collection of customer food orders"
+    },
+    "/bookings/{bookingId}": {
+      "schema": {
+        "$ref": "#/entities/Booking"
+      },
+      "description": "Collection of customer service bookings"
+    }
+  }
+}
